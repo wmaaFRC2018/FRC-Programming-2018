@@ -17,10 +17,10 @@ public class RobotMap {
 	public static final int rightRearMotor = 3;
 	
 	//Set the sparks
-	public static Spark sparkF_L;
+	/*public static Spark sparkF_L;
 	public static Spark sparkF_R;
 	public static Spark sparkB_L;
-	public static Spark sparkB_R;
+	public static Spark sparkB_R;*/
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

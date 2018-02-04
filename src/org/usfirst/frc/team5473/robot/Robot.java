@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5473.robot.commands.Power_Command;
 import org.usfirst.frc.team5473.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.ExampleSubsystem;
 
@@ -23,7 +25,7 @@ import org.usfirst.frc.team5473.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final DriveTrain_Subsystem driveTrain = new DriveTrain_Subsystem();
+	public static DriveTrain_Subsystem driveTrain;
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -35,13 +37,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		chooser.addDefault("Default Auto", new ExampleCommand());
+		driveTrain = new DriveTrain_Subsystem();
+		//chooser.addDefault("Default Auto", new Power_Command());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
-		RobotMap.sparkF_L = new Spark(0);
+		//SmartDashboard.putData("Auto mode", chooser);
+		
+		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
 		RobotMap.sparkB_L = new Spark(2);
-		RobotMap.sparkB_R = new Spark(3);
+		RobotMap.sparkB_R = new Spark(3);*/
 		oi = new OI();
 	}
 
