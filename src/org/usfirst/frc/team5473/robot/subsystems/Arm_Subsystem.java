@@ -18,7 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm_Subsystem extends Subsystem{
 	//create instances of proper spark motors, referencing the robot map.
 	private TalonSRX armMotor = new TalonSRX(15);
-	
+
+
 	//private RobotDrive mainDrive = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.rightFrontMotor, RobotMap.leftRearMotor, RobotMap.rightRearMotor);
 	
 	public Arm_Subsystem(){
@@ -35,13 +36,10 @@ public class Arm_Subsystem extends Subsystem{
 		//mainDrive.arcadeDrive(-driver.getX(), driver.getY());
 	}
 	
-	public void power(DriveSignal signal){
-		/*leftFrontMotor.set(signal.leftMotor);
-		rightFrontMotor.set(-signal.rightMotor);
-		leftRearMotor.set(signal.leftMotor);
-		rightRearMotor.set(-signal.rightMotor);*/
-		
-		
+	public void learning(DriveSignal signal){
+		armMotor.setInverted(true);
+		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
 	}
 	
 	public void stop(){
