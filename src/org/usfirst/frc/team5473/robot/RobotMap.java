@@ -16,6 +16,8 @@ public class RobotMap {
 	public static final int leftRearMotor = 2;
 	public static final int rightRearMotor = 3;
 	
+	//Talons
+	
 	//Set the sparks
 	/*public static Spark sparkF_L;
 	public static Spark sparkF_R;

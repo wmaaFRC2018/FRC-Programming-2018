@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5473.robot;
 
+import org.usfirst.frc.team5473.robot.commands.ArmUp_Command;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -26,6 +27,11 @@ public class OI {
 					button6 = new JoystickButton(leftJoy, 6),
 					button7 = new JoystickButton(leftJoy, 7),
 					button8 = new JoystickButton(leftJoy, 8);
+			
+			//When the x button is pressed, activate the up command. *TEMPORARY*
+			button4.whenPressed(new ArmUp_Command());
+			
+			
 			
 		}
 		
