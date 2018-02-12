@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 import org.usfirst.frc.team5473.robot.subsystems.Arm_Subsystem;
+import org.usfirst.frc.team5473.robot.subsystems.Claw_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.ExampleSubsystem;
 
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain_Subsystem driveTrain;
 	public static OI oi;
 	public static Arm_Subsystem arm;
+	public static Claw_Subsystem claw;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
+		claw = new Claw_Subsystem();
 		//chooser.addDefault("Default Auto", new Power_Command());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		//SmartDashboard.putData("Auto mode", chooser);

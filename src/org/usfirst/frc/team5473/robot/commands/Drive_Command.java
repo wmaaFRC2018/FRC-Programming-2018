@@ -38,7 +38,7 @@ public class Drive_Command extends Command{
 		mainDrive.tankDrive(leftStick, rightStick);
 		Timer.delay(0.005); // wait for a motor update time*/
 		
-		Robot.driveTrain.power(signal.cheesyDrive(.5*Robot.oi.leftJoy.getY(), -Robot.oi.leftJoy.getRawAxis(4), (Robot.oi.leftJoy.getRawButton(5))));
+		Robot.driveTrain.power(signal.cheesyDrive(.5*Robot.oi.getLeftJoy().getY(), -Robot.oi.getLeftJoy().getRawAxis(4), (Robot.oi.getLeftJoy().getRawButton(5))));
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package org.usfirst.frc.team5473.robot.subsystems;
 
 import org.usfirst.frc.team5473.robot.Robot;
 import org.usfirst.frc.team5473.robot.RobotMap;
+import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
 import org.usfirst.frc.team5473.robot.commands.Drive_Command;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 
@@ -26,23 +27,23 @@ public class Arm_Subsystem extends Subsystem{
 	
 	public Arm_Subsystem(){
 		super();
+		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
 	}
 	
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		//setDefaultCommand(new Drive_Command());
+		setDefaultCommand(new ArmMove_Command());
 	}
 	
-	public void up(){
-		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+	public void move(){
 		/* get gamepad axis - forward stick is positive */ 
-		double rightTrigger = -1.0 * Robot.oi.leftJoy.getRawAxis(5);
+		double rightTrigger = -1.0 * Robot.oi.getRightJoy().getRawAxis(1);
 		/* calculate the percent motor output */
 		//double motorOutput = armMotor.getMotorOutputPercent();
 		/* prepare line to print */
 
-		if (Robot.oi.leftJoy.getRawButton(2)) {
+		if (Robot.oi.getRightJoy().getRawButton(2)) {
 			/* Motion Magic - 4096 ticks/rev * 10 Rotations in either direction */
 			double targetPos = rightTrigger * 4096 * 10.0;
 			armMotor.set(ControlMode.MotionMagic, targetPos);
@@ -82,9 +83,5 @@ public class Arm_Subsystem extends Subsystem{
 		//talonFollower.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower, 6);
 	}
 	
-	public void down(){
-		/*motor.set(0);
-		motor2.set(0);*/
-		//mainDrive.drive(0,0);
-	}
+	
 }

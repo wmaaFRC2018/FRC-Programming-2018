@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5473.robot;
 
-import org.usfirst.frc.team5473.robot.commands.ArmUp_Command;
+import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	// Create the joystick and the 8 buttons on it
-		public Joystick leftJoy = new Joystick(0);
+		Joystick leftJoy = new Joystick(0);
 		Joystick rightJoy = new Joystick(1);
 		
 		public OI(){
@@ -29,14 +29,18 @@ public class OI {
 					button8 = new JoystickButton(leftJoy, 8);
 			
 			//When the x button is pressed, activate the up command. *TEMPORARY*
-			button4.whenPressed(new ArmUp_Command());
+			//button4.whenPressed(new ArmMove_Command());
 			
 			
 			
 		}
 		
-		public Joystick getJoystick(){
+		public Joystick getLeftJoy(){
 			return leftJoy;
+		}
+		
+		public Joystick getRightJoy(){
+			return rightJoy;
 		}
 	//THIS IS A TEST OF REMOTE
 	//// CREATING BUTTONS
