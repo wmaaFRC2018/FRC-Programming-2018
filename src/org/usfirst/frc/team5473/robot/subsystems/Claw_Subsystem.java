@@ -5,6 +5,8 @@
 package org.usfirst.frc.team5473.robot.subsystems;
 
 import org.usfirst.frc.team5473.robot.Robot;
+import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
+import org.usfirst.frc.team5473.robot.commands.ClawVroom_Command;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -30,6 +32,7 @@ public class Claw_Subsystem extends Subsystem {
 		// Let's show everything on the LiveWindow
 		/*LiveWindow.addActuator("Claw", "Motor", (Victor) motor);
 		LiveWindow.addActuator("Claw", "Limit Switch", contact);*/
+		setDefaultCommand(new ClawVroom_Command());
 	}
 
 	@Override

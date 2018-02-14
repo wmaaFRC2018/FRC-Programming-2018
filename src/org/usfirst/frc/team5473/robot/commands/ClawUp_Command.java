@@ -26,7 +26,7 @@ public class ClawUp_Command extends Command{
 		mainDrive.tankDrive(leftStick, rightStick);
 		Timer.delay(0.005); // wait for a motor update time*/
 		
-		Robot.claw.pivot(Robot.oi.getRightJoy().getRawAxis(0));
+		Robot.claw.pivot(Robot.oi.getRightJoy().getRawAxis(5));
 	}
 	
 	@Override
