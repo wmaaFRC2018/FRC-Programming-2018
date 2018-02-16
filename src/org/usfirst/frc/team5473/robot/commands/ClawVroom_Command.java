@@ -28,7 +28,9 @@ public class ClawVroom_Command extends Command{
 	protected void execute(){
 		if(Robot.oi.getRightJoy().getRawAxis(3)>3){
 			
-		}else
+		}else {
+			
+		}
 	}
 
 	@Override
