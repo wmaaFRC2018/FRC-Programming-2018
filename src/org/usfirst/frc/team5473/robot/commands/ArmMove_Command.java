@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ArmMove_Command extends Command{
 	//RobotDrive mainDrive = new RobotDrive(0, 1); // class that handles basic drive
@@ -17,7 +18,7 @@ public class ArmMove_Command extends Command{
 	
 	public ArmMove_Command(){
 		//mainDrive.setExpiration(0.1);
-		requires(Robot.driveTrain);
+		requires(Robot.arm);
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class ArmMove_Command extends Command{
 		Timer.delay(0.005); // wait for a motor update time*/
 		
 		Robot.arm.move();
+		SmartDashboard.putNumber("Arm Encoder", Robot.arm.getArmMotor().getSelectedSensorPosition(0));
 	}
 
 	@Override

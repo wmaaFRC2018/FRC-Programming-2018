@@ -27,6 +27,8 @@ public class Arm_Subsystem extends Subsystem{
 	
 	public Arm_Subsystem(){
 		super();
+		armMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 0);
+		armMotor.setSensorPhase(false);
 		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
 	}
 	
@@ -83,5 +85,5 @@ public class Arm_Subsystem extends Subsystem{
 		//talonFollower.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower, 6);
 	}
 	
-	
+	public TalonSRX getArmMotor(){return armMotor;}
 }

@@ -15,7 +15,8 @@ public class ClawVroom_Command extends Command{
 	
 	public ClawVroom_Command(){
 		//mainDrive.setExpiration(0.1);
-		requires(Robot.arm);
+		requires(Robot.claw);
+		
 	}
 
 	@Override
@@ -26,11 +27,18 @@ public class ClawVroom_Command extends Command{
 	
 	@Override
 	protected void execute(){
-		if(Robot.oi.getRightJoy().getRawAxis(3)>3){
-			
-		}else
+		//if a person is pressing a trigger, perform a vroom action
+		if(Math.abs(Robot.oi.getRightJoy().getRawAxis(3))>.03){
+			Robot.claw.goVroomIn(Robot.oi.getRightJoy().getRawAxis(3));
+		}else if(Math.abs(Robot.oi.getRightJoy().getRawAxis(2))>.03){
+			Robot.claw.goVroomOut(Robot.oi.getRightJoy().getRawAxis(2));
+		}else{
+			Robot.claw.stopVroom();
+		}
+		
+		//Robot.claw.goVroomOut(.5);
 	}
-
+		
 	@Override
 	protected void interrupted(){
 		end();

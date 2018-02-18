@@ -28,15 +28,16 @@ public class Claw_Subsystem extends Subsystem {
 
 	public Claw_Subsystem() {
 		super();
-
+		
 		// Let's show everything on the LiveWindow
 		/*LiveWindow.addActuator("Claw", "Motor", (Victor) motor);
 		LiveWindow.addActuator("Claw", "Limit Switch", contact);*/
-		setDefaultCommand(new ClawVroom_Command());
 	}
+	
 
 	@Override
 	public void initDefaultCommand() {
+		setDefaultCommand(new ClawVroom_Command());
 	}
 
 	public void log() {
@@ -50,14 +51,20 @@ public class Claw_Subsystem extends Subsystem {
 	}
 
 	//Make the claw motors spin inward to pull in cubes
-	public void goVroomIn(){
-		vroom.set(.75);
-		vroom2.set(-.75);
+	public void goVroomIn(double percentOutput){
+		vroom.set(percentOutput);
+		vroom2.set(-percentOutput);
 	}
 	
 	//Make the claw motors spin outward to push out power cubes
-	public void goVroomOut(){
-		vroom.set(-.75);
-		vroom2.set(.75);
+	public void goVroomOut(double percentOutput){
+		vroom.set(-percentOutput);
+		vroom2.set(percentOutput);
+	}
+	
+	//stop the claw spinning motors
+	public void stopVroom(){
+		vroom.set(0);
+		vroom2.set(0);
 	}
 }
