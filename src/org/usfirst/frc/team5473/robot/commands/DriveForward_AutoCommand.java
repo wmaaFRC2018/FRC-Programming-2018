@@ -11,19 +11,21 @@ public class DriveForward_AutoCommand extends TimedCommand {
 	
 	public DriveForward_AutoCommand(){
 		//mainDrive.setExpiration(0.1);
-		super(2);
+		super(6.25);
 		requires(Robot.driveTrain);
 	}
 	
 	@Override
 	protected void execute(){
-		Robot.driveTrain.power(signal.cheesyDrive(0.25, 0, false));
+		Robot.driveTrain.power(signal.cheesyDrive(-0.25, 0, false));
 	}
 	
+	// Called once after isFinished returns true
 	@Override
-	protected boolean isFinished() {
-		return false;
+	protected void end() {
+		Robot.driveTrain.power(signal.cheesyDrive(0, 0, false));
 	}
+	
 	
 	
 }

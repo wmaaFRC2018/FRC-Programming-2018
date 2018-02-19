@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Claw_Subsystem claw;
 
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> autoChooser;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -41,26 +41,29 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		//Robot Init//
 		RobotMap.init();
 		
+		//Making some subsystems//
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
-		chooser.addDefault("Default Auto", new Power_Command());
-<<<<<<< HEAD
-		 chooser.addObject("My Auto", new MyAutoCommand());
-=======
-		 chooser.addObject("My Auto", new DriveForward_AutoCommand());
->>>>>>> 1929009038ffacc580e94195864dac5ff6e21139
-		SmartDashboard.putData("Auto mode", chooser);
+		 
+		//Please keep oi last in subsystem connections//
+		oi = new OI();
+		
+		//Autonomous modes for choosing on SmartDashboard//
+		autoChooser = new SendableChooser<>();
+		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand());
+		//autoChooser.addObject("My Auto", new MyAutoCommand());
+			
+		SmartDashboard.putData("Auto mode", autoChooser);
 		
 		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
 		RobotMap.sparkB_L = new Spark(2);
 		RobotMap.sparkB_R = new Spark(3);*/
 		
-		//Please keep oi last
-		oi = new OI();
 	}
 
 	/**
@@ -91,7 +94,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = autoChooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
