@@ -5,6 +5,7 @@
 package org.usfirst.frc.team5473.robot.subsystems;
 
 import org.usfirst.frc.team5473.robot.Robot;
+import org.usfirst.frc.team5473.robot.RobotMap;
 import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
 import org.usfirst.frc.team5473.robot.commands.ClawUp_Command;
 import org.usfirst.frc.team5473.robot.commands.ClawVroom_Command;
@@ -23,9 +24,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * don't stall.
  */
 public class Claw_Subsystem extends Subsystem {
-	private TalonSRX clawPivot = new TalonSRX(62);
-	private VictorSP vroom = new VictorSP(4);
-	private VictorSP vroom2 = new VictorSP(5);
+	private TalonSRX clawPivot = RobotMap.clawPivot;
+	private VictorSP vroom = RobotMap.vroom;
+	private VictorSP vroom2 = RobotMap.vroom2;
 
 	public Claw_Subsystem() {
 		super();
