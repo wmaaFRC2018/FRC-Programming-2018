@@ -3,6 +3,8 @@ package org.usfirst.frc.team5473.robot;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.VictorSP;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -13,12 +15,17 @@ import edu.wpi.first.wpilibj.Spark;
 public class RobotMap {
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
-	public static final int leftFrontMotor = 0;
-	public static final int rightFrontMotor = 1;
-	public static final int leftRearMotor = 2;
-	public static final int rightRearMotor = 3;
+	
+	public static SpeedController leftFrontMotor;
+	public static SpeedController rightFrontMotor;
+	public static SpeedController leftRearMotor;
+	public static SpeedController rightRearMotor;
 	
 	public static TalonSRX armMotor;
+	public static TalonSRX clawPivot;
+	public static VictorSP vroom;
+	public static VictorSP vroom2;
+	
 	
 	//Talons
 	
@@ -33,7 +40,16 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	public static void init(){
+		
+		leftFrontMotor = new Spark(0);
+		rightFrontMotor = new Spark(1);
+		leftRearMotor = new Spark(2);
+		rightRearMotor = new Spark(3);
+		
 		armMotor = new TalonSRX(61);
-	}
+		clawPivot = new TalonSRX(62);
+		vroom = new VictorSP(4);
+		vroom2 = new VictorSP(5);
+		}
 
 }
