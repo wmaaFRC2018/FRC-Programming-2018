@@ -46,9 +46,9 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
-		//chooser.addDefault("Default Auto", new Power_Command());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		//SmartDashboard.putData("Auto mode", chooser);
+		chooser.addDefault("Default Auto", new Power_Command());
+		 chooser.addObject("My Auto", new MyAutoCommand());
+		SmartDashboard.putData("Auto mode", chooser);
 		
 		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
