@@ -1,12 +1,19 @@
 package org.usfirst.frc.team5473.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
+import org.usfirst.frc.team5473.robot.Robot;
 
-public class ArmUp_AutoCommand extends PIDCommand{
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class ArmUp_AutoCommand extends Command{
 	
 	public ArmUp_AutoCommand(){
-		super(1, 1, 1);
+		
+	}
+	
+	@Override
+	protected void initialize(){
+		
 	}
 
 	@Override
@@ -14,17 +21,15 @@ public class ArmUp_AutoCommand extends PIDCommand{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
-	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
-		return 0;
+	protected void execute(){
+		
 	}
 
 	@Override
-	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
-		
+	protected void interrupted(){
+		end();
 	}
 	
 }
