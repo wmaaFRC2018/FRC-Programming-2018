@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
+import org.usfirst.frc.team5473.robot.commands.DriveForward_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 import org.usfirst.frc.team5473.robot.subsystems.Arm_Subsystem;
@@ -46,9 +46,9 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
-		//chooser.addDefault("Default Auto", new Power_Command());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		//SmartDashboard.putData("Auto mode", chooser);
+		chooser.addDefault("Default Auto", new Power_Command());
+		 chooser.addObject("My Auto", new DriveForward_AutoCommand());
+		SmartDashboard.putData("Auto mode", chooser);
 		
 		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
