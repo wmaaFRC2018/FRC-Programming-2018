@@ -6,6 +6,7 @@ package org.usfirst.frc.team5473.robot.subsystems;
 
 import org.usfirst.frc.team5473.robot.Robot;
 import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
+import org.usfirst.frc.team5473.robot.commands.ClawUp_Command;
 import org.usfirst.frc.team5473.robot.commands.ClawVroom_Command;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -38,6 +39,7 @@ public class Claw_Subsystem extends Subsystem {
 	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new ClawVroom_Command());
+		//setDefaultCommand(new ClawUp_Command());
 	}
 
 	public void log() {

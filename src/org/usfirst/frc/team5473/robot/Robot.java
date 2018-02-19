@@ -41,6 +41,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		RobotMap.init();
+		
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
@@ -52,6 +54,8 @@ public class Robot extends IterativeRobot {
 		RobotMap.sparkF_R = new Spark(1);
 		RobotMap.sparkB_L = new Spark(2);
 		RobotMap.sparkB_R = new Spark(3);*/
+		
+		//Please keep oi last
 		oi = new OI();
 	}
 

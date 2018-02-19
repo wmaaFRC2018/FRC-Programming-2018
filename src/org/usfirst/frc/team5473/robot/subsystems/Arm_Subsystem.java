@@ -19,11 +19,10 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm_Subsystem extends Subsystem{
-	//create instances of proper spark motors, referencing the robot map.
-	private TalonSRX armMotor = new TalonSRX(61);
-	StringBuilder _sb = new StringBuilder();
 
-	//private RobotDrive mainDrive = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.rightFrontMotor, RobotMap.leftRearMotor, RobotMap.rightRearMotor);
+	StringBuilder _sb = new StringBuilder();
+	
+	private TalonSRX armMotor = RobotMap.armMotor;
 	
 	public Arm_Subsystem(){
 		super();
@@ -59,7 +58,7 @@ public class Arm_Subsystem extends Subsystem{
 	}
 	
 	//use this stuff to copy/paste what you need to communicate to CTRE motor controllers
-	public void learning(){
+	public void learningPLeaseIgnore(){
 		/* Talon Direction has been inverted */
 		//armMotor.set
 		

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5473.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.Spark;
 
 /**
@@ -16,6 +18,8 @@ public class RobotMap {
 	public static final int leftRearMotor = 2;
 	public static final int rightRearMotor = 3;
 	
+	public static TalonSRX armMotor;
+	
 	//Talons
 	
 	//Set the sparks
@@ -28,4 +32,8 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+	public static void init(){
+		armMotor = new TalonSRX(61);
+	}
+
 }
