@@ -3,29 +3,28 @@ package org.usfirst.frc.team5473.robot.commands;
 import org.usfirst.frc.team5473.robot.Robot;
 
 import External_Classes.CheesyDriveHelper;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
-public class DriveForward_AutoCommand extends TimedCommand {
+public class ClawVroomOut_AutoCommand extends TimedCommand {
 	CheesyDriveHelper signal = new CheesyDriveHelper();
 	
-	public DriveForward_AutoCommand(double time){
-		//mainDrive.setExpiration(0.1);
+	public ClawVroomOut_AutoCommand(double time) {
 		super(time);
 		requires(Robot.driveTrain);
+		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	protected void execute(){
-		Robot.driveTrain.power(signal.cheesyDrive(-0.25, 0, false));
+		//Set motor speed to 75%
+		Robot.claw.goVroomOut(.75);
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.driveTrain.power(signal.cheesyDrive(0, 0, false));
+		//Set motor speed back to 0%
+		Robot.claw.goVroomOut(0);
 	}
-	
-	
-	
+
 }

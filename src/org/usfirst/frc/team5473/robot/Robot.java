@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		
 		//Autonomous modes for choosing on SmartDashboard//
 		autoChooser = new SendableChooser<>();
-		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand());
+		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand(6.25));
 		//autoChooser.addObject("My Auto", new MyAutoCommand());
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
