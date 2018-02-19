@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain_Subsystem extends Subsystem{
 	//create instances of proper spark motors, referencing the robot map.
-	private SpeedController leftFrontMotor = new Spark(RobotMap.leftFrontMotor);
-	private SpeedController rightFrontMotor = new Spark(RobotMap.rightFrontMotor);
-	private SpeedController leftRearMotor = new Spark(RobotMap.leftRearMotor);
-	private SpeedController rightRearMotor = new Spark(RobotMap.rightRearMotor);
+	private SpeedController leftFrontMotor = RobotMap.leftFrontMotor;
+	private SpeedController rightFrontMotor = RobotMap.rightFrontMotor;
+	private SpeedController leftRearMotor = RobotMap.leftRearMotor;
+	private SpeedController rightRearMotor = RobotMap.rightRearMotor;
 	
 	//private RobotDrive mainDrive = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.rightFrontMotor, RobotMap.leftRearMotor, RobotMap.rightRearMotor);
 	
