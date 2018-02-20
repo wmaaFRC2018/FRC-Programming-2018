@@ -49,7 +49,6 @@ public class Arm_Subsystem extends Subsystem{
 			double targetPos = rightTrigger * 4096 * 10.0;
 			armMotor.set(ControlMode.MotionMagic, targetPos);
 
-			
 		} else {
 			/* Percent voltage mode */
 			armMotor.set(ControlMode.PercentOutput, rightTrigger);
