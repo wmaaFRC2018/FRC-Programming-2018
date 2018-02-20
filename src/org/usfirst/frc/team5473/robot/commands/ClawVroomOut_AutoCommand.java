@@ -10,21 +10,21 @@ public class ClawVroomOut_AutoCommand extends TimedCommand {
 	
 	public ClawVroomOut_AutoCommand(double time) {
 		super(time);
-		requires(Robot.driveTrain);
+		requires(Robot.vroom);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	protected void execute(){
 		//Set motor speed to 75%
-		Robot.claw.goVroomOut(.75);
+		Robot.vroom.goVroomOut(.75);
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
 		//Set motor speed back to 0%
-		Robot.claw.goVroomOut(0);
+		Robot.vroom.goVroomOut(0);
 	}
 
 }

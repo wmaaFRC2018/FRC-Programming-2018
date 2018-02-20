@@ -7,8 +7,10 @@ import org.usfirst.frc.team5473.robot.commands.Drive_Command;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import External_Classes.Constants;
 import External_Classes.DriveSignal;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -26,9 +28,29 @@ public class Arm_Subsystem extends Subsystem{
 	
 	public Arm_Subsystem(){
 		super();
-		armMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 0);
-		armMotor.setSensorPhase(false);
-		armMotor.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+		/* first choose the sensor */
+		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+		armMotor.setSensorPhase(true);
+		armMotor.setInverted(false);
+		// armMotor.configEncoderCodesPerRev(XXX)
+		// armMotor.configPotentiometerTurns(XXX)
+		
+		/* set the peak and nominal outputs, 12V means full */
+		armMotor.configNominalOutputForward(0, Constants.kTimeoutMs);
+		armMotor.configNominalOutputReverse(0, Constants.kTimeoutMs);
+		armMotor.configPeakOutputForward(.5, Constants.kTimeoutMs);
+		armMotor.configPeakOutputReverse(-.5, Constants.kTimeoutMs);
+		
+		/* set closed loop gains in slot0 - see documentation */
+		armMotor.selectProfileSlot(Constants.kSlotIdx, Constants.kPIDLoopIdx);
+		armMotor.config_kF(0, 0.2, Constants.kTimeoutMs);
+		armMotor.config_kP(0, 0.2, Constants.kTimeoutMs);
+		armMotor.config_kI(0, 0, Constants.kTimeoutMs);
+		armMotor.config_kD(0, 0, Constants.kTimeoutMs);
+		/* set acceleration and vcruise velocity - see documentation */
+		armMotor.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
+		armMotor.configMotionAcceleration(6000, Constants.kTimeoutMs);
+		/* zero the sensor */
 	}
 	
 	@Override
@@ -40,22 +62,21 @@ public class Arm_Subsystem extends Subsystem{
 	public void move(){
 		/* get gamepad axis - forward stick is positive */ 
 		double rightTrigger = 1.0 * Robot.oi.getRightJoy().getRawAxis(1);
-		/* calculate the percent motor output */
-		//double motorOutput = armMotor.getMotorOutputPercent();
-		/* prepare line to print */
-
-		if (Robot.oi.getRightJoy().getRawButton(2)) {
-			/* Motion Magic - 4096 ticks/rev * 10 Rotations in either direction */
-			double targetPos = rightTrigger * 4096 * 10.0;
-			armMotor.set(ControlMode.MotionMagic, targetPos);
-
-			
-		} else {
-			/* Percent voltage mode */
-			armMotor.set(ControlMode.PercentOutput, rightTrigger);
-		}
 		
+		/* Percent voltage mode */
+		armMotor.set(ControlMode.PercentOutput, rightTrigger);
 	}
+	
+	public void moveToPosition(double position){
+		/* calculate the percent motor output */
+		double motorOutput = Robot.arm.getArmMotor().getMotorOutputPercent();
+		
+		/* Motion Magic - 4096 ticks/rev * 10 Rotations in either direction */
+		double targetPos = position * 4096 * 10.0;
+		Robot.arm.getArmMotor().set(ControlMode.MotionMagic, targetPos);
+	}
+	
+	
 	
 	//use this stuff to copy/paste what you need to communicate to CTRE motor controllers
 	public void learningPLeaseIgnore(){

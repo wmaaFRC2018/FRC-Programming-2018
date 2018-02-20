@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5473.robot.commands.ArmUp_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.DriveForward_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
@@ -16,6 +17,7 @@ import org.usfirst.frc.team5473.robot.subsystems.Arm_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.Claw_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5473.robot.subsystems.Vroom_Subsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Arm_Subsystem arm;
 	public static Claw_Subsystem claw;
+	public static Vroom_Subsystem vroom;
 
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser;
@@ -48,6 +51,7 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
+		vroom = new Vroom_Subsystem();
 		 
 		//Please keep oi last in subsystem connections//
 		oi = new OI();
@@ -55,7 +59,7 @@ public class Robot extends IterativeRobot {
 		//Autonomous modes for choosing on SmartDashboard//
 		autoChooser = new SendableChooser<>();
 		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand());
-		//autoChooser.addObject("My Auto", new MyAutoCommand());
+		autoChooser.addObject("Arm Auto", new ArmUp_AutoCommand(-.1));
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
 		

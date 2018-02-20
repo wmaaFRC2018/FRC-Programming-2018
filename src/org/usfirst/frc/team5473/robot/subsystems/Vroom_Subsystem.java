@@ -23,10 +23,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * If using stronger motors, you should probably use a sensor so that the motors
  * don't stall.
  */
-public class Claw_Subsystem extends Subsystem {
-	private TalonSRX clawPivot = RobotMap.clawPivot;
-	
-	public Claw_Subsystem() {
+public class Vroom_Subsystem extends Subsystem {
+	private VictorSP vroom = RobotMap.vroom;
+	private VictorSP vroom2 = RobotMap.vroom2;
+
+	public Vroom_Subsystem() {
 		super();
 		
 		// Let's show everything on the LiveWindow
@@ -37,7 +38,7 @@ public class Claw_Subsystem extends Subsystem {
 
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new ClawUp_Command());
+		setDefaultCommand(new ClawVroom_Command());
 		//setDefaultCommand(new ClawUp_Command());
 	}
 
@@ -47,8 +48,22 @@ public class Claw_Subsystem extends Subsystem {
 	/**
 	 * Set the claw pivot motor to move in the direction indicated by the left joystick.
 	 */
-	public void pivot(double power) {
-		clawPivot.set(ControlMode.PercentOutput, power);
-	}
 
+	//Make the claw motors spin inward to pull in cubes
+	public void goVroomIn(double percentOutput){
+		vroom.set(percentOutput);
+		vroom2.set(percentOutput);
+	}
+	
+	//Make the claw motors spin outward to push out power cubes
+	public void goVroomOut(double percentOutput){
+		vroom.set(-percentOutput);
+		vroom2.set(-percentOutput);
+	}
+	
+	//stop the claw spinning motors
+	public void stopVroom(){
+		vroom.set(0);
+		vroom2.set(0);
+	}
 }
