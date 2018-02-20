@@ -39,7 +39,7 @@ public class Arm_Subsystem extends Subsystem{
 	
 	public void move(){
 		/* get gamepad axis - forward stick is positive */ 
-		double rightTrigger = -1.0 * Robot.oi.getRightJoy().getRawAxis(1);
+		double rightTrigger = 1.0 * Robot.oi.getRightJoy().getRawAxis(1);
 		/* calculate the percent motor output */
 		//double motorOutput = armMotor.getMotorOutputPercent();
 		/* prepare line to print */
