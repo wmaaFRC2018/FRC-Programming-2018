@@ -9,7 +9,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team5473.robot.commands.ArmUp_AutoCommand;
+=======
+import org.usfirst.frc.team5473.robot.commands.ClawUp_AutoCommand;
+>>>>>>> 5f985a899c4beb6d722e3232eb4df9b8e591b4ab
 import org.usfirst.frc.team5473.robot.commands.DriveForward_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
@@ -58,8 +62,11 @@ public class Robot extends IterativeRobot {
 		
 		//Autonomous modes for choosing on SmartDashboard//
 		autoChooser = new SendableChooser<>();
+		
 		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand());
 		autoChooser.addObject("Arm Auto", new ArmUp_AutoCommand(-.1));
+		autoChooser.addObject("Test ClawUp Subsystem", new ClawUp_AutoCommand(2));
+		//autoChooser.addObject("My Auto", new MyAutoCommand());
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
 		

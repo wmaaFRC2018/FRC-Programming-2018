@@ -37,7 +37,11 @@ public class Claw_Subsystem extends Subsystem {
 
 	@Override
 	public void initDefaultCommand() {
+
 		setDefaultCommand(new ClawUp_Command());
+
+		//setDefaultCommand(new ClawVroom_Command());
+
 		//setDefaultCommand(new ClawUp_Command());
 	}
 
@@ -49,6 +53,12 @@ public class Claw_Subsystem extends Subsystem {
 	 */
 	public void pivot(double power) {
 		clawPivot.set(ControlMode.PercentOutput, power);
+	}
+	
+	
+	public void autoPivot(double rotations) {
+		double targetPos = 4096 * rotations;
+		clawPivot.set(ControlMode.MotionMagic, targetPos);
 	}
 
 }

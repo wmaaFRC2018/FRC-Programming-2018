@@ -69,7 +69,11 @@ public class Arm_Subsystem extends Subsystem{
 	
 	public void moveToPosition(double position){
 		/* calculate the percent motor output */
+
 		double motorOutput = Robot.arm.getArmMotor().getMotorOutputPercent();
+		//double motorOutput = armMotor.getMotorOutputPercent();
+		/* prepare line to print */
+
 		
 		/* Motion Magic - 4096 ticks/rev * 10 Rotations in either direction */
 		double targetPos = position * 4096 * 10.0;
