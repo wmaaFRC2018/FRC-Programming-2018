@@ -6,7 +6,7 @@ import External_Classes.CheesyDriveHelper;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ClawUp_AutoCommand extends Command {
-	private boolean finished = false;
+	private boolean isFinished;
 	
 	CheesyDriveHelper signal = new CheesyDriveHelper();
 	private double rotations;
@@ -20,13 +20,13 @@ public class ClawUp_AutoCommand extends Command {
 	@Override
 	protected void execute() {
 		Robot.claw.autoPivot(rotations);
-		finished = true;
+		isFinished = false;
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub5
-		return finished;
+		return isFinished;
 	}
 	
 	@Override

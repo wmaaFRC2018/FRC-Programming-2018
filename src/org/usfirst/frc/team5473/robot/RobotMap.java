@@ -50,6 +50,6 @@ public class RobotMap {
 		clawPivot = new TalonSRX(62);
 		vroom = new VictorSP(4);
 		vroom2 = new VictorSP(5);
-		}
+	}
 
 }

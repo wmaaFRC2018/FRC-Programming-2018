@@ -9,11 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
 import org.usfirst.frc.team5473.robot.commands.ArmUp_AutoCommand;
-=======
 import org.usfirst.frc.team5473.robot.commands.ClawUp_AutoCommand;
->>>>>>> 5f985a899c4beb6d722e3232eb4df9b8e591b4ab
 import org.usfirst.frc.team5473.robot.commands.DriveForward_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
