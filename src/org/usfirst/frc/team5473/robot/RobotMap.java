@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5473.robot;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -26,6 +27,8 @@ public class RobotMap {
 	public static VictorSP vroom;
 	public static VictorSP vroom2;
 	
+	public static PigeonIMU pidgey;
+	
 	
 	//Talons
 	
@@ -46,10 +49,13 @@ public class RobotMap {
 		leftRearMotor = new Spark(2);
 		rightRearMotor = new Spark(3);
 		
-		armMotor = new TalonSRX(61);
-		clawPivot = new TalonSRX(62);
 		vroom = new VictorSP(4);
 		vroom2 = new VictorSP(5);
+		clawPivot = new TalonSRX(62);
+		armMotor = new TalonSRX(61);
+		
+		pidgey = new PigeonIMU(60);
+		
 		}
 
 }

@@ -18,16 +18,19 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Arm_Subsystem extends Subsystem{
+public class Arm_Subsystem extends PIDSubsystem{
 
 	StringBuilder _sb = new StringBuilder();
 	
 	private TalonSRX armMotor = RobotMap.armMotor;
 	
 	public Arm_Subsystem(){
-		super();
+		super("Arm", 0, 0, 0);
+		setAbsoluteTolerance(0.05);
+		getPIDController().setContinuous(false);
 		/* first choose the sensor */
 		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
 		armMotor.setSensorPhase(true);
@@ -110,4 +113,16 @@ public class Arm_Subsystem extends Subsystem{
 	}
 	
 	public TalonSRX getArmMotor(){return armMotor;}
+
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return armMotor.getSelectedSensorPosition(0); //Returns the raw value of the encoder on the arm
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		
+	}
 }

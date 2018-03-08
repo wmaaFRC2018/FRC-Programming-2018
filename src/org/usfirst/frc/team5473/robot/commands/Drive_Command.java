@@ -41,6 +41,8 @@ public class Drive_Command extends Command{
 			Robot.driveTrain.power(signal.cheesyDrive(Robot.oi.getLeftJoy().getY(), -Robot.oi.getLeftJoy().getRawAxis(4), Robot.oi.getLeftJoy().getRawButton(5)));
 		else
 			Robot.driveTrain.power(signal.cheesyDrive(.5*Robot.oi.getLeftJoy().getY(), -Robot.oi.getLeftJoy().getRawAxis(4), Robot.oi.getLeftJoy().getRawButton(5)));
+	
+		Robot.driveTrain.log("Yaw: ", Robot.driveTrain.getYaw());
 	}
 
 	@Override
