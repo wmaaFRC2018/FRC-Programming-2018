@@ -86,7 +86,7 @@ public class Arm_Subsystem extends PIDSubsystem{
 	
 	
 	//use this stuff to copy/paste what you need to communicate to CTRE motor controllers
-	public void learningPLeaseIgnore(){
+	public void learningPleaseIgnore(){
 		/* Talon Direction has been inverted */
 		//armMotor.set
 		

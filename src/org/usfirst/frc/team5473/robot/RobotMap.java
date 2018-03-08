@@ -56,6 +56,6 @@ public class RobotMap {
 		
 		pidgey = new PigeonIMU(60);
 		
-		}
+	}
 
 }

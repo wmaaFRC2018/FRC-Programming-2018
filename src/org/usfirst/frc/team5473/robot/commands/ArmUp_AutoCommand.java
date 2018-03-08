@@ -14,7 +14,7 @@ public class ArmUp_AutoCommand extends Command{
 	private boolean isFinished;
 	
 	public ArmUp_AutoCommand(double position){
-		this.position=position;
+		this.position = position;
 	}
 	
 	@Override
@@ -32,7 +32,7 @@ public class ArmUp_AutoCommand extends Command{
 	@Override
 	protected void execute(){
 		Robot.arm.moveToPosition(position);
-		isFinished=false;
+		isFinished = false;
 	}
 
 	@Override
