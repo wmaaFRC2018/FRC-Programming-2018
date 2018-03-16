@@ -20,17 +20,16 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Arm_Subsystem extends PIDSubsystem{
+public class Arm_Subsystem extends Subsystem{
 
 	StringBuilder _sb = new StringBuilder();
 	
 	private TalonSRX armMotor = RobotMap.armMotor;
 	
 	public Arm_Subsystem(){
-		super("Arm", 0, 0, 0);
-		setAbsoluteTolerance(0.05);
-		getPIDController().setContinuous(false);
+		super();
 		/* first choose the sensor */
 		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
 		armMotor.setSensorPhase(true);
@@ -86,7 +85,7 @@ public class Arm_Subsystem extends PIDSubsystem{
 	
 	
 	//use this stuff to copy/paste what you need to communicate to CTRE motor controllers
-	public void learningPleaseIgnore(){
+	public void learningPLeaseIgnore(){
 		/* Talon Direction has been inverted */
 		//armMotor.set
 		
@@ -114,15 +113,7 @@ public class Arm_Subsystem extends PIDSubsystem{
 	
 	public TalonSRX getArmMotor(){return armMotor;}
 
-	@Override
-	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
-		return armMotor.getSelectedSensorPosition(0); //Returns the raw value of the encoder on the arm
-	}
-
-	@Override
-	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
-		
+	public void log(String key, double data){
+		SmartDashboard.putNumber(key, data);
 	}
 }

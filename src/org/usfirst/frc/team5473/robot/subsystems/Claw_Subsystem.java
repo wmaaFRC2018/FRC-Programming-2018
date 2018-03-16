@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The claw subsystem is a simple system with a motor for opening and closing.
@@ -70,7 +71,8 @@ public class Claw_Subsystem extends Subsystem {
 		//setDefaultCommand(new ClawUp_Command());
 	}
 
-	public void log() {
+	public void log(String key, double data){
+		SmartDashboard.putNumber(key, data);
 	}
 
 	/**
