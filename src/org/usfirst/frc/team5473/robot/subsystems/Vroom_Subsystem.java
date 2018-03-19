@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The claw subsystem is a simple system with a motor for opening and closing.
@@ -42,9 +43,6 @@ public class Vroom_Subsystem extends Subsystem {
 		//setDefaultCommand(new ClawUp_Command());
 	}
 
-	public void log() {
-	}
-
 	/**
 	 * Set the claw pivot motor to move in the direction indicated by the left joystick.
 	 */
@@ -65,5 +63,9 @@ public class Vroom_Subsystem extends Subsystem {
 	public void stopVroom(){
 		vroom.set(0);
 		vroom2.set(0);
+	}
+	
+	public void log(String key, double data){
+		SmartDashboard.putNumber(key, data);
 	}
 }

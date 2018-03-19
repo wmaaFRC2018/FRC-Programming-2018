@@ -37,7 +37,6 @@ public class ArmMove_Command extends Command{
 		Timer.delay(0.005); // wait for a motor update time*/
 		
 		Robot.arm.move();
-		SmartDashboard.putNumber("Arm Encoder", Robot.arm.getArmMotor().getSelectedSensorPosition(0));
 	}
 
 	@Override

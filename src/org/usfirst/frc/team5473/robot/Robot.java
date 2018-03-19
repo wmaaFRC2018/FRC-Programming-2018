@@ -13,6 +13,7 @@ import org.usfirst.frc.team5473.robot.commands.ArmUp_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ClawUp_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.DriveForward_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5473.robot.commands.Log_Command;
 import org.usfirst.frc.team5473.robot.commands.Power_Command;
 import org.usfirst.frc.team5473.robot.subsystems.Arm_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.Claw_Subsystem;
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
 	public static Vroom_Subsystem vroom;
 
 	Command autonomousCommand;
+	Command log;
 	SendableChooser<Command> autoChooser;
 
 	/**
@@ -66,7 +68,15 @@ public class Robot extends IterativeRobot {
 		//autoChooser.addObject("My Auto", new MyAutoCommand());
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
+<<<<<<< HEAD
 				
+=======
+		
+		//Log systems of the robot
+		log = new Log_Command();
+		log.start();
+		
+>>>>>>> c52183e06e009d408ffdf071e7eee3e73d06fb25
 		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
 		RobotMap.sparkB_L = new Spark(2);
