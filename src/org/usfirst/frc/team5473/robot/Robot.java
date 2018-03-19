@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		//autoChooser.addObject("My Auto", new MyAutoCommand());
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
-		
+				
 		/*RobotMap.sparkF_L = new Spark(0);
 		RobotMap.sparkF_R = new Spark(1);
 		RobotMap.sparkB_L = new Spark(2);

@@ -6,6 +6,7 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -55,6 +56,9 @@ public class RobotMap {
 		armMotor = new TalonSRX(61);
 		
 		pidgey = new PigeonIMU(60);
+		
+		//SmartDashboard.putData("Test", armMotor.getBusVoltage());
+
 		
 	}
 
