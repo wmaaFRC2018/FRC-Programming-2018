@@ -57,9 +57,6 @@ public class RobotMap {
 		
 		pidgey = new PigeonIMU(60);
 		
-		//SmartDashboard.putData("Test", armMotor.getBusVoltage());
-
-		
 	}
 
 }
