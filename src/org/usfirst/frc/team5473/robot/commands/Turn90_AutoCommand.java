@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Turn90_AutoCommand extends Command{
 	private int direction;
+	private boolean isFinished=false;
 	
 	public Turn90_AutoCommand(int direction){
 		this.direction=direction;
@@ -20,12 +21,13 @@ public class Turn90_AutoCommand extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return isFinished;
 	}
 	
 	@Override
 	protected void execute(){
 		Robot.driveTrain.setSetpoint(direction*90);
+		isFinished=(Robot.driveTrain.onTarget())?true:false;
 	}
 	
 	@Override

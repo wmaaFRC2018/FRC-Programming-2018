@@ -55,6 +55,8 @@ public class Claw_Subsystem extends Subsystem {
 		clawPivot.configMotionCruiseVelocity(15000, Constants.kTimeoutMs);
 		clawPivot.configMotionAcceleration(6000, Constants.kTimeoutMs);
 		
+		//clawPivot.setNeutralMode(brake));
+		
 		// Let's show everything on the LiveWindow
 		/*LiveWindow.addActuator("Claw", "Motor", (Victor) motor);
 		LiveWindow.addActuator("Claw", "Limit Switch", contact);*/

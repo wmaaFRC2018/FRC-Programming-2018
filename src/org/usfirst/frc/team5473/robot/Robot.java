@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import org.usfirst.frc.team5473.robot.commands.ArmUp_AutoCommand;
 import org.usfirst.frc.team5473.robot.commands.ClawUp_AutoCommand;
@@ -36,6 +38,8 @@ public class Robot extends IterativeRobot {
 	public static Arm_Subsystem arm;
 	public static Claw_Subsystem claw;
 	public static Vroom_Subsystem vroom;
+	
+	public static int GSM;
 
 	Command autonomousCommand;
 	Command log;
@@ -48,6 +52,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		//Robot Init//
+		CameraServer.getInstance().startAutomaticCapture();
 		RobotMap.init();
 		
 		//Making some subsystems//
@@ -62,7 +67,7 @@ public class Robot extends IterativeRobot {
 		//Autonomous modes for choosing on SmartDashboard//
 		autoChooser = new SendableChooser<>();
 		
-		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand());
+		autoChooser.addDefault("Default Auto", new DriveForward_AutoCommand(7));
 		autoChooser.addObject("Arm Auto", new ArmUp_AutoCommand(-.1));
 		autoChooser.addObject("Test ClawUp Subsystem", new ClawUp_AutoCommand(2));
 		//autoChooser.addObject("My Auto", new MyAutoCommand());
@@ -92,6 +97,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		GSM=getGameSpecificMessage();
 		Scheduler.getInstance().run();
 	}
 
@@ -154,5 +160,20 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+	
+	public int getGameSpecificMessage(){
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+        if(gameData.length() > 0){
+        	if(gameData.charAt(0) == 'L'){
+        		//Put left auto code here
+        		return 0;
+        	} else {
+        		//Put right auto code here
+        		return 1;
+		  }
+       }else
+    	   return -1;
 	}
 }

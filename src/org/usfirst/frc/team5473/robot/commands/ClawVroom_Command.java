@@ -29,9 +29,14 @@ public class ClawVroom_Command extends Command{
 	protected void execute(){
 		//if a person is pressing a trigger, perform a vroom action
 		if(Math.abs(Robot.oi.getRightJoy().getRawAxis(3))>.03){
-			Robot.vroom.goVroomIn(.5*Robot.oi.getRightJoy().getRawAxis(3));
+			Robot.vroom.goVroomIn(Robot.oi.getRightJoy().getRawAxis(3));
 		}else if(Math.abs(Robot.oi.getRightJoy().getRawAxis(2))>.03){
+			
 			Robot.vroom.goVroomOut(.5*Robot.oi.getRightJoy().getRawAxis(2));
+		}else if(Robot.oi.getRightJoy().getRawButton(5)){
+			Robot.vroom.diffVroom(.3, -.3);
+		}else if(Robot.oi.getRightJoy().getRawButton(6)){
+			Robot.vroom.diffVroom(-.3, .3);
 		}else{
 			Robot.vroom.stopVroom();
 		}

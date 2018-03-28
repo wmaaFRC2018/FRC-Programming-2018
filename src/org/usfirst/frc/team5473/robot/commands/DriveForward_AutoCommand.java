@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 public class DriveForward_AutoCommand extends TimedCommand {
 	CheesyDriveHelper signal = new CheesyDriveHelper();
 	
-	public DriveForward_AutoCommand(){
+	public DriveForward_AutoCommand(double seconds){
 		//mainDrive.setExpiration(0.1);
-		super(6.25);
+		super(seconds);
 		requires(Robot.driveTrain);
 	}
 	

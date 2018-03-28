@@ -30,7 +30,7 @@ public class CheesyDriveHelper {
                 mQuickStopAccumulator = (1 - alpha) * mQuickStopAccumulator + alpha * Util.limit(wheel, 1.0) * 2;
             }
             overPower = 1.0;
-            angularPower = wheel;
+            angularPower = .5*wheel;
         } else {
             overPower = 0.0;
             angularPower = Math.abs(throttle) * wheel * kTurnSensitivity - mQuickStopAccumulator;

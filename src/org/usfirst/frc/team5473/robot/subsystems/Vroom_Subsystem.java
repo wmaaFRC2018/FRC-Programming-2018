@@ -65,6 +65,11 @@ public class Vroom_Subsystem extends Subsystem {
 		vroom2.set(0);
 	}
 	
+	public void diffVroom(double percentOne, double percentTwo){
+		vroom.set(percentOne);
+		vroom2.set(percentTwo);
+	}
+	
 	public void log(String key, double data){
 		SmartDashboard.putNumber(key, data);
 	}
