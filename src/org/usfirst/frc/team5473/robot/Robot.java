@@ -73,6 +73,12 @@ public class Robot extends IterativeRobot {
 		//autoChooser.addObject("My Auto", new MyAutoCommand());
 			
 		SmartDashboard.putData("Auto mode", autoChooser);
+
+		SmartDashboard.putNumber("armMotor Output Voltage", RobotMap.armMotor.getMotorOutputVoltage());
+		SmartDashboard.putNumber("armMotor Output Percent", RobotMap.armMotor.getMotorOutputPercent());
+		
+		SmartDashboard.putNumber("clawPivot Output Voltage", RobotMap.clawPivot.getMotorOutputVoltage());
+		SmartDashboard.putNumber("clawPivot Output Percent", RobotMap.clawPivot.getMotorOutputPercent());
 		
 		//Log systems of the robot
 		log = new Log_Command();
