@@ -17,14 +17,14 @@ public class ClawVroomOut_AutoCommand extends TimedCommand {
 	@Override
 	protected void execute(){
 		//Set motor speed to 75%
-		Robot.vroom.goVroomOut(.75);
+		Robot.vroom.goVroomOut();
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
 		//Set motor speed back to 0%
-		Robot.vroom.goVroomOut(0);
+		Robot.vroom.goVroomOut();
 	}
 
 }

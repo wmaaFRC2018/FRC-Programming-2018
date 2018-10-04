@@ -14,7 +14,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,8 +25,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * don't stall.
  */
 public class Vroom_Subsystem extends Subsystem {
-	private VictorSP vroom = RobotMap.vroom;
-	private VictorSP vroom2 = RobotMap.vroom2;
+	private Solenoid solenoid1 = RobotMap.solenoid1;
+	private Solenoid solenoid2 = RobotMap.solenoid2;
 
 	public Vroom_Subsystem() {
 		super();
@@ -48,26 +48,15 @@ public class Vroom_Subsystem extends Subsystem {
 	 */
 
 	//Make the claw motors spin inward to pull in cubes
-	public void goVroomIn(double percentOutput){
-		vroom.set(percentOutput);
-		vroom2.set(percentOutput);
+	public void goVroomIn(){
+		solenoid1.set(true);
+		solenoid2.set(true);
 	}
 	
 	//Make the claw motors spin outward to push out power cubes
-	public void goVroomOut(double percentOutput){
-		vroom.set(-percentOutput);
-		vroom2.set(-percentOutput);
-	}
-	
-	//stop the claw spinning motors
-	public void stopVroom(){
-		vroom.set(0);
-		vroom2.set(0);
-	}
-	
-	public void diffVroom(double percentOne, double percentTwo){
-		vroom.set(percentOne);
-		vroom2.set(percentTwo);
+	public void goVroomOut(){
+		solenoid1.set(false);
+		solenoid2.set(false);
 	}
 	
 	public void log(String key, double data){
