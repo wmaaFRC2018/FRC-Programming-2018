@@ -13,7 +13,7 @@ public class SwitchScore_AutoCommand extends CommandGroup{
 		addSequential(new Turn90_AutoCommand(-Robot.GSM));
 		addSequential(new DriveForward_AutoCommand(2.75));
 		addSequential(new ClawLowerForSwitch_AutoCommand(.5));
-		addSequential(new ClawVroomOut_AutoCommand(.5));
+		addSequential(new SolenoidOut_AutoCommand(.5));
 		
 	}
 }

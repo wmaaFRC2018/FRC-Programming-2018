@@ -5,7 +5,8 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -25,13 +26,15 @@ public class RobotMap {
 	
 	public static TalonSRX armMotor;
 	public static TalonSRX clawPivot;
-	public static VictorSP vroom;
-	public static VictorSP vroom2;
+	public static Compressor compressor;
+	public static Solenoid solenoid1;
+	public static Solenoid solenoid2;
 	
 	public static PigeonIMU pidgey;
 	
 	
 	//Talons
+	//Test push
 	
 	//Set the sparks
 	/*public static Spark sparkF_L;
@@ -50,8 +53,9 @@ public class RobotMap {
 		leftRearMotor = new Spark(2);
 		rightRearMotor = new Spark(3);
 		
-		vroom = new VictorSP(4);
-		vroom2 = new VictorSP(5);
+		solenoid1 = new Solenoid(1);
+		solenoid2 = new Solenoid(2);
+		compressor = new Compressor(0);
 		clawPivot = new TalonSRX(62);
 		armMotor = new TalonSRX(61);
 		

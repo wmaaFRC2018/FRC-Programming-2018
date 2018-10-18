@@ -8,7 +8,7 @@ import org.usfirst.frc.team5473.robot.Robot;
 import org.usfirst.frc.team5473.robot.RobotMap;
 import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
 import org.usfirst.frc.team5473.robot.commands.ClawUp_Command;
-import org.usfirst.frc.team5473.robot.commands.ClawVroom_Command;
+import org.usfirst.frc.team5473.robot.commands.ClawSolenoid_Command;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;

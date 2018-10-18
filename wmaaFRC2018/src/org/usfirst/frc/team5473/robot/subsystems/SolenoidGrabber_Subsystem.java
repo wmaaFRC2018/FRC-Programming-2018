@@ -7,14 +7,14 @@ package org.usfirst.frc.team5473.robot.subsystems;
 import org.usfirst.frc.team5473.robot.Robot;
 import org.usfirst.frc.team5473.robot.RobotMap;
 import org.usfirst.frc.team5473.robot.commands.ArmMove_Command;
+import org.usfirst.frc.team5473.robot.commands.ClawSolenoid_Command;
 import org.usfirst.frc.team5473.robot.commands.ClawUp_Command;
-import org.usfirst.frc.team5473.robot.commands.ClawVroom_Command;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,13 +24,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * If using stronger motors, you should probably use a sensor so that the motors
  * don't stall.
  */
-public class Vroom_Subsystem extends Subsystem {
-	private VictorSP vroom = RobotMap.vroom;
-	private VictorSP vroom2 = RobotMap.vroom2;
+public class SolenoidGrabber_Subsystem extends Subsystem {
+	private Solenoid solenoid1 = RobotMap.solenoid1;
+	private Solenoid solenoid2 = RobotMap.solenoid2;
 
-	public Vroom_Subsystem() {
+	public SolenoidGrabber_Subsystem() {
 		super();
-		//test
+		
 		// Let's show everything on the LiveWindow
 		/*LiveWindow.addActuator("Claw", "Motor", (Victor) motor);
 		LiveWindow.addActuator("Claw", "Limit Switch", contact);*/
@@ -39,7 +39,7 @@ public class Vroom_Subsystem extends Subsystem {
 
 	@Override
 	public void initDefaultCommand() {
-		setDefaultCommand(new ClawVroom_Command());
+		setDefaultCommand(new ClawSolenoid_Command());
 		//setDefaultCommand(new ClawUp_Command());
 	}
 
@@ -47,27 +47,19 @@ public class Vroom_Subsystem extends Subsystem {
 	 * Set the claw pivot motor to move in the direction indicated by the left joystick.
 	 */
 
-	//Make the claw motors spin inward to pull in cubes
-	public void goVroomIn(double percentOutput){
-		vroom.set(percentOutput);
-		vroom2.set(percentOutput);
+	//Make the claw solenoids extend
+	public void extend(){
+		solenoid1.set(true);
+		solenoid2.set(true);
 	}
 	
-	//Make the claw motors spin outward to push out power cubes
-	public void goVroomOut(double percentOutput){
-		vroom.set(-percentOutput);
-		vroom2.set(-percentOutput);
+	//Make the claw solenoids retract
+	public void retract(){
+		solenoid1.set(false);
+		solenoid2.set(false);
 	}
 	
-	//stop the claw spinning motors
-	public void stopVroom(){
-		vroom.set(0);
-		vroom2.set(0);
+	public void log(String key, double data){
+		SmartDashboard.putNumber(key, data);
 	}
-	
-	public void diffVroom(double percentOne, double percentTwo){
-		vroom.set(percentOne);
-		vroom2.set(percentTwo);
-	}
-	
 }

@@ -5,26 +5,26 @@ import org.usfirst.frc.team5473.robot.Robot;
 import External_Classes.CheesyDriveHelper;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
-public class ClawVroomOut_AutoCommand extends TimedCommand {
+public class SolenoidOut_AutoCommand extends TimedCommand {
 	CheesyDriveHelper signal = new CheesyDriveHelper();
 	
-	public ClawVroomOut_AutoCommand(double time) {
+	public SolenoidOut_AutoCommand(double time) {
 		super(time);
-		requires(Robot.vroom);
+		requires(Robot.pshuk);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	protected void execute(){
-		//Set motor speed to 75%
-		Robot.vroom.goVroomIn(.75);
+		//extend solenoids
+		Robot.pshuk.extend();
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		//Set motor speed back to 0%
-		Robot.vroom.goVroomOut(0);
+		//Set solenoids to default non extended state
+		Robot.pshuk.retract();
 	}
 
 }

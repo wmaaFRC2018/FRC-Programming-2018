@@ -24,7 +24,7 @@ import org.usfirst.frc.team5473.robot.subsystems.Arm_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.Claw_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.DriveTrain_Subsystem;
 import org.usfirst.frc.team5473.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5473.robot.subsystems.Vroom_Subsystem;
+import org.usfirst.frc.team5473.robot.subsystems.SolenoidGrabber_Subsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Arm_Subsystem arm;
 	public static Claw_Subsystem claw;
-	public static Vroom_Subsystem vroom;
+	public static SolenoidGrabber_Subsystem pshuk;
 	
 	public static int GSM;
 
@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain_Subsystem();
 		arm = new Arm_Subsystem();
 		claw = new Claw_Subsystem();
-		vroom = new Vroom_Subsystem();
+		pshuk = new SolenoidGrabber_Subsystem();
 		 
 		//Please keep oi last in subsystem connections//
 		oi = new OI();

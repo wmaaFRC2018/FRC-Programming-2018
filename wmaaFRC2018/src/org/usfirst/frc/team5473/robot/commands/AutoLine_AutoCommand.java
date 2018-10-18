@@ -17,7 +17,7 @@ public class AutoLine_AutoCommand extends CommandGroup{
 			}
 			addSequential(new DriveForward_AutoCommand(.75));
 			addSequential(new ClawLowerForSwitch_AutoCommand(.5));
-			addSequential(new ClawVroomOut_AutoCommand(.5));
+			addSequential(new SolenoidOut_AutoCommand(.5));
 		}
 		
 	}
